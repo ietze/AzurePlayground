@@ -15,6 +15,10 @@ if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("APPLICATIONINSIGHT
         .UseFunctionsWorkerDefaults()
         .UseAzureMonitorExporter();
 }
+else
+{
+    throw new Exception("Environment variable APPLICATIONINSIGHTS_CONNECTION_STRING is not set.");
+}
 
 builder.Services.AddOptions<MaxDoctorOutputSettings>()
     .BindConfiguration("MaxDoctorOutput")
